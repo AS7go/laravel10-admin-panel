@@ -67,19 +67,17 @@
                with font-awesome or any other icon font library -->
 
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
-                                {{-- <i class="nav-icon fas fa-th"></i> --}}
+                            {{-- <a href="pages/widgets.html" class="nav-link"> --}}
+                            <a href="{{route('homeAdmin')}}" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Main
-                                    {{-- <span class="right badge badge-danger">New</span> --}}
+                                    Главная
                                 </p>
                             </a>
                         </li>
-                        {{-- <li class="nav-item menu-open"> --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     Блог
                                     <i class="right fas fa-angle-left"></i>
@@ -88,24 +86,20 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="./index.html" class="nav-link">
-                                        {{-- <i class="far fa-circle nav-icon"></i> --}}
                                         <p>Все статьи</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="./index.html" class="nav-link">
-                                        {{-- <i class="far fa-circle nav-icon"></i> --}}
                                         <p>Добавить статью</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
-
-                        {{-- <li class="nav-item menu-open"> --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-align-left"></i>
                                 <p>
                                     Категории
                                     <i class="right fas fa-angle-left"></i>
@@ -114,13 +108,11 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="./index.html" class="nav-link">
-                                        {{-- <i class="far fa-circle nav-icon"></i> --}}
                                         <p>Все категории</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="./index.html" class="nav-link">
-                                        {{-- <i class="far fa-circle nav-icon"></i> --}}
                                         <p>Добавить категорию</p>
                                     </a>
                                 </li>
@@ -184,6 +176,7 @@
     <script src="/admin/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="/admin/dist/js/pages/dashboard.js"></script>
+    <script src="/admin/admin.js"></script>
 </body>
 
 </html>
