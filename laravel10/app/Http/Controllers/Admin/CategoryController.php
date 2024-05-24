@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.category.index');
     }
 
     /**
@@ -29,7 +29,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $new_category = new Category();
+        $new_category->title=$request->title;
+        $new_category->save();
+
+        return redirect()->back()->withSuccess('Категория - ' . $new_category->title . ' успешно добавленна!');
     }
 
     /**
