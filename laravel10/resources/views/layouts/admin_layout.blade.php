@@ -26,17 +26,12 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="/admin/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
-    <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
+    {{-- <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css"> --}}
+    <link href="/admin/dist/css/colorbox.css" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
-        <!-- Preloader -->
-        {{-- <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60"
-                width="60">
-        </div> --}}
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -90,7 +85,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="{{route('post.create')}}" class="nav-link">
                                         <p>Добавить статью</p>
                                     </a>
                                 </li>
@@ -178,6 +173,13 @@
     <script src="/admin/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="/admin/dist/js/pages/dashboard.js"></script>
+    <script type="text/javascript" src="/admin/dist/js/jquery.colorbox-min.js"></script>
+ 
+    <!-- Подключение TinyMCE и его инициализация -->
+    <script src="https://cdn.tiny.cloud/1/lw7ei9nexs16rwwtualmn0h6oqetghnrml23diq5jgvwsza1/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script>
+    {{-- <script type="text/javascript" src="/public/packages/barryvdh/elfinder/js/standalonepopup.js"></script> --}}
     <script src="/admin/admin.js"></script>
 </body>
 
