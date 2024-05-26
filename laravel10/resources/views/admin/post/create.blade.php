@@ -62,10 +62,10 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="feature_image">Feature Image</label>
+                                    <label for="feature_image">Изображение статьи</label>
                                     <img src="" alt="" class="img-uploaded" style="display: block; width: 300px">
-                                    <input type="text" class="form-control" id="feature_image" name="feature_image" value="" readonly>
-                                    <a href="" class="popup_selector" data-inputid="feature_image">Select Image</a>
+                                    <input type="text" name="img" class="form-control" id="feature_image" name="feature_image" value="" readonly>
+                                    <a href="" class="popup_selector" data-inputid="feature_image">Выбрать изображение</a>
                                 </div>
                                
                             </div>
