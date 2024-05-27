@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 
-@section('title', 'Добавить статью')
+@section('title', 'Редактировать статью')
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Добавить статью</h1>
+                    <h1 class="m-0">Редактировать статью {{ $post->title }}</h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -34,14 +34,15 @@
                     <div class="card card-primary">
 
                         <!-- form start -->
-                        <form action="{{ route('post.store') }}" method="POST">
+                        <form action="{{ route('post.update', $post->id) }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Название</label>
-                                    <input type="text" name="title" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Введите название статьи" required>
+                                    <input type="text" value="{{ $post->title }}" name="title" class="form-control"
+                                        id="exampleInputEmail1" placeholder="Введите название статьи" required>
                                 </div>
 
                                 <div class="form-group">
@@ -51,30 +52,34 @@
                                         <select name="cat_id" class="form-control" required>
                                             @foreach ($categories as $category)
                                                 {{-- id будет записываться в таблицу posts в поле cat_id --}}
-                                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                                <option value="{{ $category->id }}"
+                                                    @if ($category->id == $post->cat_id) selected @endif>{{ $category->title }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <textarea name="text" class="editor"></textarea>
+                                    <textarea name="text" class="editor">{{ $post->text }}</textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="feature_image">Изображение статьи</label>
-                                    <img src="" alt="" class="img-uploaded" style="display: block; width: 300px">
-                                    {{-- <input type="text" name="img" class="form-control" id="feature_image" name="feature_image" value="" readonly> --}}
-                                    <input type="text" name="img" class="form-control" id="feature_image" readonly>
-                                    <a href="" class="popup_selector" data-inputid="feature_image">Выбрать изображение</a>
+                                    <img src="{{ $post->img }}" alt="" class="img-uploaded" style="display: block; width: 300px">
+                                    {{-- <img src="/{{ $post->img }}" alt="" class="img-uploaded" style="display: block; width: 300px"> --}}
+                                    {{-- <input type="text" value="{{ $post->img }}" name="img" class="form-control" id="feature_image" name="feature_image" value="" readonly> --}}
+                                    <input type="text" value="{{ $post->img }}" name="img" class="form-control" id="feature_image" readonly>
+                                    <a href="" class="popup_selector" data-inputid="feature_image">Выбрать
+                                        изображение</a>
                                 </div>
-                               
+
                             </div>
 
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Добавить</button>
+                                <button type="submit" class="btn btn-primary">Сохранить</button>
                             </div>
 
                         </form>
@@ -88,15 +93,18 @@
     <!-- /.content -->
 
     <!-- Подключение TinyMCE и его инициализация -->
-    <!-- Place the first <script> tag in your HTML's <head> -->
-    <script src="https://cdn.tiny.cloud/1/lw7ei9nexs16rwwtualmn0h6oqetghnrml23diq5jgvwsza1/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <!-- Place the first <script>
+        tag in your HTML 's <head> --> <script src =
+            "https://cdn.tiny.cloud/1/lw7ei9nexs16rwwtualmn0h6oqetghnrml23diq5jgvwsza1/tinymce/7/tinymce.min.js"
+        referrerpolicy = "origin" >
+    </script>
 
 
-    {{-- задействованный рабочий скрипт по пути laravel10/public/admin/admin.js --}}
+        {{-- задействованный рабочий скрипт по пути laravel10/public/admin/admin.js --}}
 
-    {{-- Конфигурация 1: Подходит для сложных и функционально насыщенных проектов, где важна расширенная функциональность и множество возможностей редактирования. --}}
+        {{-- Конфигурация 1: Подходит для сложных и функционально насыщенных проектов, где важна расширенная функциональность и множество возможностей редактирования. --}}
 
-    {{-- <script>
+        {{-- <script>
     tinymce.init({
         selector: '.editor',
         plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
@@ -111,9 +119,9 @@
     });
     </script> --}}
 
-    {{-- Конфигурация 2: Идеальна для простых проектов, где требуется минималистичный и легкий текстовый редактор с базовыми функциями. --}}
-    
-    {{-- <script>
+        {{-- Конфигурация 2: Идеальна для простых проектов, где требуется минималистичный и легкий текстовый редактор с базовыми функциями. --}}
+        
+        {{-- <script>
         tinymce.init({
             selector: 'textarea.editor',
             plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
@@ -122,10 +130,3 @@
     </script> --}}
 
 @endsection
-
-
-
-
-
-
-

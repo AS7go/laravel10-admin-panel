@@ -14,7 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::orderBy('created_at', 'DESC')->get();
+
+        return view('admin.post.index', [
+            'posts' => $posts
+        ]);
     }
 
     /**
@@ -22,10 +26,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        $category=Category::orderBy('created_at','DESC')->get();
+        $categories = Category::orderBy('created_at', 'DESC')->get();
 
         return view('admin.post.create', [
-            'categories'=>$category
+            'categories' => $categories
         ]);
     }
 
@@ -35,10 +39,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = new Post();
-        $post->title=$request->title;
-        $post->img='/' . $request->img;
-        $post->text=$request->text;
-        $post->cat_id=$request->cat_id;
+        $post->title = $request->title;
+        $post->img = $request->img;
+        // $post->img = '/' . $request->img;
+        $post->text = $request->text;
+        $post->cat_id = $request->cat_id;
         $post->save();
 
         return redirect()->back()->withSuccess('Статья успешно Добавленна!');
@@ -57,7 +62,12 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::orderBy('created_at', 'DESC')->get();
+
+        return view('admin.post.edit', [
+            'categories' => $categories,
+            'post' => $post,
+        ]);
     }
 
     /**
@@ -65,7 +75,13 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->title = $request->title;
+        $post->img = $request->img;
+        $post->text = $request->text;
+        $post->cat_id = $request->cat_id;
+        $post->save();
+
+        return redirect()->back()->withSuccess('Статья была успешно обновлена!');
     }
 
     /**

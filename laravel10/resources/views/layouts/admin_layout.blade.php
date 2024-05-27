@@ -80,7 +80,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="{{route('post.index')}}" class="nav-link">
                                         <p>Все статьи</p>
                                     </a>
                                 </li>
@@ -184,3 +184,6 @@
 </body>
 
 </html>
+
+
+
